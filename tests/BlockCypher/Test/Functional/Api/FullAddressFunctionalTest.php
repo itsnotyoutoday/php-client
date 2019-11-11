@@ -77,7 +77,7 @@ class FullAddressFunctionalTest extends \PHPUnit\Framework\TestCase
         $this->assertContainsOnlyInstancesOf('\BlockCypher\Api\FullAddress', $result);
         $this->assertEquals(count($result), count($fullAddressList));
         foreach ($result as $fullAddr) {
-            $this->assertContains($fullAddr->getAddress(), $fullAddressList);
+            $this->assertStringContainsString($fullAddr->getAddress(), $fullAddressList);
         }
         return $result;
     }

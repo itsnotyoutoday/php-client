@@ -79,12 +79,10 @@ class WebHookTest extends ResourceModelTestCase
         $this->assertEquals($obj->getFilter(), "event=unconfirmed-tx&hash=2b17f5589528f97436b5d563635b4b27ca8980aa20c300abdc538f2a8bfa871b");
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage url is not a fully qualified URL
-     */
     public function testUrlValidationForUrl()
     {
+        $this->expectException('\InvalidArgumentException');
+        $this->expectExceptionMessage('url is not a fully qualified URL');
         $obj = new WebHook();
         $obj->setUrl(null);
     }
@@ -134,7 +132,6 @@ class WebHookTest extends ResourceModelTestCase
      * @param WebHook $obj
      * @param $mockApiContext
      * @param $params
-     * @expectedException \InvalidArgumentException
      */
     public function testGetParamsValidationForParams(
         $obj, /** @noinspection PhpDocSignatureInspection */
@@ -142,6 +139,7 @@ class WebHookTest extends ResourceModelTestCase
         $params
     )
     {
+        $this->expectException('\InvalidArgumentException');
         $mockBlockCypherRestCall = $this->getMockBuilder('\BlockCypher\Transport\BlockCypherRestCall')
             ->disableOriginalConstructor()
             ->getMock();
@@ -194,7 +192,6 @@ class WebHookTest extends ResourceModelTestCase
      * @param WebHook $obj
      * @param $mockApiContext
      * @param $params
-     * @expectedException \InvalidArgumentException
      */
     public function testGetMultipleParamsValidationForParams(
         $obj, /** @noinspection PhpDocSignatureInspection */
@@ -202,6 +199,7 @@ class WebHookTest extends ResourceModelTestCase
         $params
     )
     {
+        $this->expectException('\InvalidArgumentException');
         $mockBlockCypherRestCall = $this->getMockBuilder('\BlockCypher\Transport\BlockCypherRestCall')
             ->disableOriginalConstructor()
             ->getMock();

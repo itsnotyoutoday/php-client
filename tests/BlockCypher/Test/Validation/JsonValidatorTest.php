@@ -39,10 +39,10 @@ class JsonValidatorTest extends \PHPUnit\Framework\TestCase
     /**
      *
      * @dataProvider invalidProvider
-     * @expectedException \InvalidArgumentException
      */
     public function testInvalidJson($input)
     {
+        $this->expectException('\InvalidArgumentException');
         JsonValidator::validate($input);
     }
 

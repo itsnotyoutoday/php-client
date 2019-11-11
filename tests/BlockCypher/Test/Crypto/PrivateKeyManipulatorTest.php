@@ -79,11 +79,11 @@ class PrivateKeyManipulatorTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @test
-     * @expectedException \InvalidArgumentException
      */
     public function
     should_throw_an_exception_importing_a_private_key_with_invalid_format()
     {
+        $this->expectException('\InvalidArgumentException');
         PrivateKeyManipulator::importPrivateKey('INVALID PRIVATE KEY');
     }
 

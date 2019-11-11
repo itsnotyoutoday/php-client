@@ -70,10 +70,10 @@ class AddressClientTest extends ClientTestCase
      * @param AddressClient $obj
      * @param PHPUnit_Framework_MockObject_MockObject|ApiContext $mockApiContext
      * @param PHPUnit_Framework_MockObject_MockObject|BlockCypherRestCall $mockBlockCypherRestCall
-     * @expectedException \InvalidArgumentException
      */
     public function testGenerateMultisigAddressValidationForPubkeys($obj, $mockApiContext, $mockBlockCypherRestCall)
     {
+        $this->expectException('\InvalidArgumentException');
         $mockBlockCypherRestCall->expects($this->any())
             ->method('execute')
             ->will($this->returnValue(
@@ -128,10 +128,10 @@ class AddressClientTest extends ClientTestCase
      * @param AddressClient $obj
      * @param PHPUnit_Framework_MockObject_MockObject|ApiContext $mockApiContext
      * @param PHPUnit_Framework_MockObject_MockObject|BlockCypherRestCall $mockBlockCypherRestCall
-     * @expectedException \InvalidArgumentException
      */
     public function testGetParamsValidationForAddressNull($obj, $mockApiContext, $mockBlockCypherRestCall)
     {
+        $this->expectException('\InvalidArgumentException');
         $mockBlockCypherRestCall->expects($this->any())
             ->method('execute')
             ->will($this->returnValue(
@@ -146,10 +146,10 @@ class AddressClientTest extends ClientTestCase
      * @param AddressClient $obj
      * @param PHPUnit_Framework_MockObject_MockObject|ApiContext $mockApiContext
      * @param PHPUnit_Framework_MockObject_MockObject|BlockCypherRestCall $mockBlockCypherRestCall
-     * @expectedException \InvalidArgumentException
      */
     public function testGetParamsValidationForEmptyAddress($obj, $mockApiContext, $mockBlockCypherRestCall)
     {
+        $this->expectException('\InvalidArgumentException');
         $mockBlockCypherRestCall->expects($this->any())
             ->method('execute')
             ->will($this->returnValue(
@@ -188,10 +188,10 @@ class AddressClientTest extends ClientTestCase
      * @param PHPUnit_Framework_MockObject_MockObject|ApiContext $mockApiContext
      * @param PHPUnit_Framework_MockObject_MockObject|BlockCypherRestCall $mockBlockCypherRestCall
      * @param $params
-     * @expectedException \InvalidArgumentException
      */
     public function testGetParamsValidationForParams($obj, $mockApiContext, $mockBlockCypherRestCall, $params)
     {
+        $this->expectException('\InvalidArgumentException');
         $mockBlockCypherRestCall->expects($this->any())
             ->method('execute')
             ->will($this->returnValue(
@@ -249,10 +249,10 @@ class AddressClientTest extends ClientTestCase
      * @param PHPUnit_Framework_MockObject_MockObject|ApiContext $mockApiContext
      * @param PHPUnit_Framework_MockObject_MockObject|BlockCypherRestCall $mockBlockCypherRestCall
      * @param $params
-     * @expectedException \InvalidArgumentException
      */
     public function testGetMultipleParamsValidationForParams($obj, $mockApiContext, $mockBlockCypherRestCall, $params)
     {
+        $this->expectException('\InvalidArgumentException');
         $mockBlockCypherRestCall->expects($this->any())
             ->method('execute')
             ->will($this->returnValue(
@@ -316,10 +316,10 @@ class AddressClientTest extends ClientTestCase
      * @param PHPUnit_Framework_MockObject_MockObject|ApiContext $mockApiContext
      * @param PHPUnit_Framework_MockObject_MockObject|BlockCypherRestCall $mockBlockCypherRestCall
      * @param $params
-     * @expectedException \InvalidArgumentException
      */
     public function testGetBalanceParamsValidationForParams($obj, $mockApiContext, $mockBlockCypherRestCall, $params)
     {
+        $this->expectException('\InvalidArgumentException');
         $mockBlockCypherRestCall->expects($this->any())
             ->method('execute')
             ->will($this->returnValue(
@@ -356,10 +356,10 @@ class AddressClientTest extends ClientTestCase
      * @param PHPUnit_Framework_MockObject_MockObject|ApiContext $mockApiContext
      * @param PHPUnit_Framework_MockObject_MockObject|BlockCypherRestCall $mockBlockCypherRestCall
      * @param $params
-     * @expectedException \InvalidArgumentException
      */
     public function testGetMultipleBalancesParamsValidationForParams($obj, $mockApiContext, $mockBlockCypherRestCall, $params)
     {
+        $this->expectException('\InvalidArgumentException');
         $mockBlockCypherRestCall->expects($this->any())
             ->method('execute')
             ->will($this->returnValue(
@@ -420,10 +420,10 @@ class AddressClientTest extends ClientTestCase
      * @param PHPUnit_Framework_MockObject_MockObject|ApiContext $mockApiContext
      * @param PHPUnit_Framework_MockObject_MockObject|BlockCypherRestCall $mockBlockCypherRestCall
      * @param $params
-     * @expectedException \InvalidArgumentException
      */
     public function testGetFullAddressParamsValidationForParams($obj, $mockApiContext, $mockBlockCypherRestCall, $params)
     {
+        $this->expectException('\InvalidArgumentException');
         $mockBlockCypherRestCall->expects($this->any())
             ->method('execute')
             ->will($this->returnValue(
@@ -485,10 +485,10 @@ class AddressClientTest extends ClientTestCase
      * @param PHPUnit_Framework_MockObject_MockObject|ApiContext $mockApiContext
      * @param PHPUnit_Framework_MockObject_MockObject|BlockCypherRestCall $mockBlockCypherRestCall
      * @param $params
-     * @expectedException \InvalidArgumentException
      */
     public function testGetMultipleFullAddressesParamsValidationForParams($obj, $mockApiContext, $mockBlockCypherRestCall, $params)
     {
+        $this->expectException('\InvalidArgumentException');
         $mockBlockCypherRestCall->expects($this->any())
             ->method('execute')
             ->will($this->returnValue(

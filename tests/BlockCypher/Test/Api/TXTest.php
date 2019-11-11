@@ -254,7 +254,6 @@ class TXTest extends ResourceModelTestCase
      * @param TX $obj
      * @param $mockApiContext
      * @param $params
-     * @expectedException \InvalidArgumentException
      */
     public function testGetParamsValidationForParams(
         $obj, /** @noinspection PhpDocSignatureInspection */
@@ -262,6 +261,7 @@ class TXTest extends ResourceModelTestCase
         $params
     )
     {
+        $this->expectException('\InvalidArgumentException');
         $mockBlockCypherRestCall = $this->getMockBuilder('\BlockCypher\Transport\BlockCypherRestCall')
             ->disableOriginalConstructor()
             ->getMock();
@@ -407,7 +407,6 @@ class TXTest extends ResourceModelTestCase
      * @param TX $obj
      * @param $mockApiContext
      * @param $params
-     * @expectedException \InvalidArgumentException
      */
     public function testGetMultipleParamsValidationForParams(
         $obj, /** @noinspection PhpDocSignatureInspection */
@@ -415,6 +414,7 @@ class TXTest extends ResourceModelTestCase
         $params
     )
     {
+        $this->expectException('\InvalidArgumentException');
         $mockBlockCypherRestCall = $this->getMockBuilder('\BlockCypher\Transport\BlockCypherRestCall')
             ->disableOriginalConstructor()
             ->getMock();

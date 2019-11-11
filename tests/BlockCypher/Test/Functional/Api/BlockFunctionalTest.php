@@ -97,7 +97,7 @@ class BlockFunctionalTest extends \PHPUnit\Framework\TestCase
         $this->assertContainsOnlyInstancesOf('\BlockCypher\Api\Block', $result);
         $this->assertEquals(count($result), count($blockList));
         foreach ($result as $resultBlock) {
-            $this->assertContains($resultBlock->getHash(), $blockList);
+            $this->assertStringContainsString($resultBlock->getHash(), $blockList);
         }
         return $result;
     }

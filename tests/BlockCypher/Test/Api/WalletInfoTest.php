@@ -79,7 +79,7 @@ class WalletInfoTest extends ResourceModelTestCase
     {
         $obj->addAddress("1jr1rHMthQVMNSYswB9ExSvYn339fWMzn");
 
-        $this->assertContains("1jr1rHMthQVMNSYswB9ExSvYn339fWMzn", $obj->getAddresses());
+        $this->assertStringContainsString("1jr1rHMthQVMNSYswB9ExSvYn339fWMzn", $obj->getAddresses());
     }
 
     /**

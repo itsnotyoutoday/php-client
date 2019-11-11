@@ -333,12 +333,12 @@ class BlockCypherModelTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @dataProvider getInvalidProvider
-     * @expectedException InvalidArgumentException
-     * @expectedExceptionMessage Invalid JSON String
      * @param string|null $input
      */
     public function testGetListInvalidInput($input)
     {
+        $this->expectException('\InvalidArgumentException');
+        $this->expectExceptionMessage('Invalid JSON String');
         $result = BlockCypherModel::getList($input);
     }
 

@@ -79,7 +79,7 @@ class WalletTest extends ResourceModelTestCase
     {
         $obj->addAddress("1jr1rHMthQVMNSYswB9ExSvYn339fWMzn");
 
-        $this->assertContains("1jr1rHMthQVMNSYswB9ExSvYn339fWMzn", $obj->getAddresses());
+        $this->assertStringContainsString("1jr1rHMthQVMNSYswB9ExSvYn339fWMzn", $obj->getAddresses());
     }
 
     /**
@@ -252,7 +252,6 @@ class WalletTest extends ResourceModelTestCase
      * @param Wallet $obj
      * @param $mockApiContext
      * @param $params
-     * @expectedException \InvalidArgumentException
      */
     public function testGetParamsValidationForParams(
         $obj, /** @noinspection PhpDocSignatureInspection */
@@ -260,6 +259,7 @@ class WalletTest extends ResourceModelTestCase
         $params
     )
     {
+        $this->expectException('\InvalidArgumentException');
         $mockBlockCypherRestCall = $this->getMockBuilder('\BlockCypher\Transport\BlockCypherRestCall')
             ->disableOriginalConstructor()
             ->getMock();
@@ -280,7 +280,6 @@ class WalletTest extends ResourceModelTestCase
      * @param Wallet $obj
      * @param $mockApiContext
      * @param $params
-     * @expectedException \InvalidArgumentException
      */
     public function testGetMultipleParamsValidationForParams(
         $obj, /** @noinspection PhpDocSignatureInspection */
@@ -288,6 +287,7 @@ class WalletTest extends ResourceModelTestCase
         $params
     )
     {
+        $this->expectException('\InvalidArgumentException');
         $mockBlockCypherRestCall = $this->getMockBuilder('\BlockCypher\Transport\BlockCypherRestCall')
             ->disableOriginalConstructor()
             ->getMock();

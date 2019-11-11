@@ -56,7 +56,7 @@ class ModelAccessValidatorTest extends \PHPUnit\Framework\TestCase
         try {
             $this->assertFalse(ModelAccessorValidator::validate($class, $name));
         } catch (\Exception $ex) {
-            $this->assertContains($exMessage, $ex->getMessage());
+            $this->assertStringContainsString($exMessage, $ex->getMessage());
         }
     }
 }

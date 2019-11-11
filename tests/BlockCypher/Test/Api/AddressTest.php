@@ -215,11 +215,11 @@ class AddressTest extends ResourceModelTestCase
     /**
      * @dataProvider mockProvider
      * @param Address $obj
-     * @expectedException \InvalidArgumentException
      */
     public function testGetParamsValidationForAddressNull($obj, /** @noinspection PhpDocSignatureInspection */
                                                           $mockApiContext)
     {
+        $this->expectException('\InvalidArgumentException');
         $mockBlockCypherRestCall = $this->getMockBuilder('\BlockCypher\Transport\BlockCypherRestCall')
             ->disableOriginalConstructor()
             ->getMock();
@@ -238,11 +238,11 @@ class AddressTest extends ResourceModelTestCase
     /**
      * @dataProvider mockProvider
      * @param Address $obj
-     * @expectedException \InvalidArgumentException
      */
     public function testGetParamsValidationForEmptyAddress($obj, /** @noinspection PhpDocSignatureInspection */
                                                            $mockApiContext)
     {
+        $this->expectException('\InvalidArgumentException');
         $mockBlockCypherRestCall = $this->getMockBuilder('\BlockCypher\Transport\BlockCypherRestCall')
             ->disableOriginalConstructor()
             ->getMock();
@@ -290,7 +290,6 @@ class AddressTest extends ResourceModelTestCase
      * @param Address $obj
      * @param $mockApiContext
      * @param $params
-     * @expectedException \InvalidArgumentException
      */
     public function testGetParamsValidationForParams(
         $obj, /** @noinspection PhpDocSignatureInspection */
@@ -298,6 +297,7 @@ class AddressTest extends ResourceModelTestCase
         $params
     )
     {
+        $this->expectException('\InvalidArgumentException');
         $mockBlockCypherRestCall = $this->getMockBuilder('\BlockCypher\Transport\BlockCypherRestCall')
             ->disableOriginalConstructor()
             ->getMock();
@@ -375,7 +375,6 @@ class AddressTest extends ResourceModelTestCase
      * @param Address $obj
      * @param $mockApiContext
      * @param $params
-     * @expectedException \InvalidArgumentException
      */
     public function testGetMultipleParamsValidationForParams(
         $obj, /** @noinspection PhpDocSignatureInspection */
@@ -383,6 +382,7 @@ class AddressTest extends ResourceModelTestCase
         $params
     )
     {
+        $this->expectException('\InvalidArgumentException');
         $mockBlockCypherRestCall = $this->getMockBuilder('\BlockCypher\Transport\BlockCypherRestCall')
             ->disableOriginalConstructor()
             ->getMock();

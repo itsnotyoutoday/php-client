@@ -39,11 +39,11 @@ class PrivateKeyListTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @dataProvider dataProvider
-     * @expectedException \InvalidArgumentException
      * @param $address
      */
     public function testFromHexPrivateKeyArrayWithInvalidCoinSymbol($address)
     {
+        $this->expectException('\InvalidArgumentException');
         $hexPrivateKeyArray = array($address['private']);
         $privateKeyList = PrivateKeyList::fromHexPrivateKeyArray($hexPrivateKeyArray, 'INVALID-COIN-SYMBOL', $address['compressed']);
 
@@ -62,6 +62,7 @@ class PrivateKeyListTest extends \PHPUnit\Framework\TestCase
 
         $privateKeyList->addPrivateKey($privateKey);
 
+        /* FIXME:  Is this an array? */
         $this->assertContains($privateKey, $privateKeyList->getPrivateKeys());
     }
 

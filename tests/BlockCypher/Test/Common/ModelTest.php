@@ -49,12 +49,10 @@ class ModelTest extends \PHPUnit\Framework\TestCase
         $this->assertNull($obj->getDescription());
     }
 
-    /**
-     * @expectedException        \InvalidArgumentException
-     * @expectedExceptionMessage Invalid JSON String
-     */
     public function testConstructorInvalidInput()
     {
+        $this->expectException('\InvalidArgumentException');
+        $this->expectExceptionMessage('Invalid JSON String');
         new SimpleClass("Something that is not even correct");
     }
 
@@ -116,6 +114,7 @@ class ModelTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals("test", $obj->getName());
         $this->assertEquals("description", $obj->getDescription());
 
+        // FIXME: Need to find the current way PHPUNit Handles contains in Objects
         $resultJson = $obj->toJSON();
         $this->assertContains("unknown", $resultJson);
         $this->assertContains("id", $resultJson);
@@ -141,11 +140,12 @@ class ModelTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals("test", $obj->getName());
         $this->assertEquals("description", $obj->getDescription());
         $resultJson = $obj->toJSON();
-        $this->assertContains("unknown", $resultJson);
-        $this->assertContains("id", $resultJson);
-        $this->assertContains("object", $resultJson);
-        $this->assertContains("123", $resultJson);
-        $this->assertContains("456", $resultJson);
+        /* TODO: Is here a better Test for this? */
+        $this->assertStringContainsString("unknown", $resultJson);
+        $this->assertStringContainsString("id", $resultJson);
+        $this->assertStringContainsString("object", $resultJson);
+        $this->assertStringContainsString("123", $resultJson);
+        $this->assertStringContainsString("456", $resultJson);
         BlockCypherConfigManager::getInstance()->addConfigs(array('validation.level' => 'strict'));
     }
 
@@ -155,7 +155,7 @@ class ModelTest extends \PHPUnit\Framework\TestCase
         $json = '{"block_hash":"0000000000000000c504bdea36e531d8089d324f2d936c86e3274f97f8a44328","inputs":[{"related_resources":[]}]}';
         $transaction = new TX($json);
         $result = $transaction->toJSON();
-        $this->assertContains('"related_resources":[]', $result);
+        $this->assertStringContainsString('"related_resources":[]', $result);
         $this->assertNotNull($result);
     }
 
@@ -165,7 +165,7 @@ class ModelTest extends \PHPUnit\Framework\TestCase
         $json = '{"block_hash":"0000000000000000c504bdea36e531d8089d324f2d936c86e3274f97f8a44328","inputs":[{"related_resources":[{},{}]}]}';
         $transaction = new TX($json);
         $result = $transaction->toJSON();
-        $this->assertContains('"related_resources":[{},{}]', $result);
+        $this->assertStringContainsString('"related_resources":[{},{}]', $result);
         $this->assertNotNull($result);
     }
 

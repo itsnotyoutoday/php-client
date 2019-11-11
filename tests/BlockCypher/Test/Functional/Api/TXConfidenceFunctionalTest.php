@@ -77,7 +77,7 @@ class TXConfidenceFunctionalTest extends \PHPUnit\Framework\TestCase
         $this->assertContainsOnlyInstancesOf('\BlockCypher\Api\TXConfidence', $result);
         $this->assertEquals(count($result), count($txConfidenceList));
         foreach ($result as $resultTxConfidence) {
-            $this->assertContains($resultTxConfidence->getTxhash(), $txConfidenceList);
+            $this->assertStringContainsString($resultTxConfidence->getTxhash(), $txConfidenceList);
         }
         return $result;
     }
