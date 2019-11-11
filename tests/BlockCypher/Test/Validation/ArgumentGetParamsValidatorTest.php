@@ -4,7 +4,7 @@ namespace BlockCypher\Test\Validation;
 use BlockCypher\Validation\ArgumentGetParamsValidator;
 use PHPUnit_Framework_Error_Notice;
 
-class ArgumentGetParamsValidatorTest extends \PHPUnit_Framework_TestCase
+class ArgumentGetParamsValidatorTest extends \PHPUnit\Framework\TestCase
 {
 
     public static function positiveProvider()

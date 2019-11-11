@@ -25,7 +25,7 @@ class WebTestCase extends \PHPUnit_Framework_TestCase
      */
     protected $url;
 
-    public function setUp()
+    public function setUp(): void
     {
 
         $this->client = new Client();

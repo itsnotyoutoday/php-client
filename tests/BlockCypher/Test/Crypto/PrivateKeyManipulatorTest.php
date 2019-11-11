@@ -10,7 +10,7 @@ use BlockCypher\Crypto\PrivateKeyManipulator;
  * Class PrivateKeyManipulatorTest
  * @package BlockCypher\Test\Crypto
  */
-class PrivateKeyManipulatorTest extends \PHPUnit_Framework_TestCase
+class PrivateKeyManipulatorTest extends \PHPUnit\Framework\TestCase
 {
     const ADDRESS_PRIVATE_KEY = '1551558c3b75f46b71ec068f9e341bf35ee6df361f7b805deb487d8a4d5f055e';
     const /** @noinspection SpellCheckingInspection */
@@ -109,7 +109,7 @@ class PrivateKeyManipulatorTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->privateKey = PrivateKeyManipulator::importPrivateKeyFromHex(self::ADDRESS_PRIVATE_KEY, true);
     }

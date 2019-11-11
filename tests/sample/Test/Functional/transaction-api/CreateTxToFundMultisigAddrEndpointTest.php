@@ -10,7 +10,7 @@ use sample\Test\Functional\WebTestCase;
  */
 class CreateTxToFundMultisigAddrEndpointTest extends WebTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $className = $this->getClassName();

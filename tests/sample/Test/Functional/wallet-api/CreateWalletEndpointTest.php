@@ -13,7 +13,7 @@ use sample\Test\Functional\WalletSampleTestCase;
  */
 class CreateWalletEndpointTest extends WalletSampleTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         self::$walletName = 'alice';

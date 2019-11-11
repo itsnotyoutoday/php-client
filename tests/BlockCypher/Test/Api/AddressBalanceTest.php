@@ -4,6 +4,7 @@ namespace BlockCypher\Test\Api;
 
 use BlockCypher\Api\AddressBalance;
 
+
 /**
  * Class AddressBalanceTest
  *

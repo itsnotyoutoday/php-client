@@ -6,7 +6,7 @@ use BlockCypher\Api\TX;
 use BlockCypher\Common\BlockCypherModel;
 use BlockCypher\Core\BlockCypherConfigManager;
 
-class ModelTest extends \PHPUnit_Framework_TestCase
+class ModelTest extends \PHPUnit\Framework\TestCase
 {
     public function testSimpleClassConversion()
     {

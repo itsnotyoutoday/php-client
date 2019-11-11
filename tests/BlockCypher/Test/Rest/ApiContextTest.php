@@ -6,7 +6,7 @@ use BlockCypher\Rest\ApiContext;
  * Test class for ApiContextTest.
  *
  */
-class ApiContextTest extends PHPUnit_Framework_TestCase
+class ApiContextTest extends \PHPUnit\Framework\TestCase
 {
 
     /**
@@ -14,7 +14,7 @@ class ApiContextTest extends PHPUnit_Framework_TestCase
      */
     public $apiContext;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->apiContext = new ApiContext();
     }

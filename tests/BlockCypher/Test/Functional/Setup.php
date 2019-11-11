@@ -11,7 +11,7 @@ class Setup
 {
     public static $mode = 'mock';
 
-    public static function SetUpForFunctionalTests(\PHPUnit_Framework_TestCase &$test)
+    public static function SetUpForFunctionalTests(\PHPUnit\Framework\TestCase &$test)
     {
         $configs = array(
             'mode' => 'sandbox',

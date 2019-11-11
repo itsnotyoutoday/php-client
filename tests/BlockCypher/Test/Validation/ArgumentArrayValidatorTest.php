@@ -3,7 +3,7 @@ namespace BlockCypher\Test\Validation;
 
 use BlockCypher\Validation\ArgumentArrayValidator;
 
-class ArgumentArrayValidatorTest extends \PHPUnit_Framework_TestCase
+class ArgumentArrayValidatorTest extends \PHPUnit\Framework\TestCase
 {
 
     public static function positiveProvider()
