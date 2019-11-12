@@ -4,6 +4,10 @@
 	Common functions used across samples
 */
 
+use BlockCypher\Api\AddressKeyChain;
+use BlockCypher\Common\BlockCypherResourceModel;
+use BlockCypher\Core\BlockCypherHttpConnection;
+
 /**
  * Helper Class for Printing Results
  *
@@ -41,8 +45,8 @@ class ResultPrinter
      * @param string $title
      * @param string $objectName
      * @param string $objectId
-     * @param mixed $request
-     * @param mixed $response
+     * @param BlockCypherResourceModel $request
+     * @param AddressKeyChain $response
      * @param string $errorMessage
      * @param bool $forceConsole
      */
@@ -97,12 +101,16 @@ class ResultPrinter
             }
 
             echo '<div class="row hidden-xs hidden-sm hidden-md"><div class="col-md-6"><h4>Request Object</h4>';
+            echo "<i>";
+            echo BlockCypherHttpConnection::lastQuery()? "(" . BlockCypherHttpConnection::lastQuery(). ")":"";
+            echo "</i>";
             self::printObject($request);
             if (!is_array($response)) {
                 echo '</div><div class="col-md-6"><h4 class="' . ($errorMessage ? 'error' : '') . '">Response Object</h4>';
             } else {
                 echo '</div><div class="col-md-6"><h4 class="' . ($errorMessage ? 'error' : '') . '">Response Objects Array</h4>';
             }
+
             self::printObject($response, $errorMessage);
             echo '</div></div>';
 
@@ -176,7 +184,7 @@ class ResultPrinter
                 echo "</pre>";
             }
         } else {
-            echo "<span>No Data</span>";
+            echo "<pre class='\"prettyprint\"'>No Data</pre>";
         }
     }
 

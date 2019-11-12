@@ -38,12 +38,12 @@ class SimpleTokenCredential extends BlockCypherResourceModel implements TokenCre
 
     /**
      * Get AccessToken
-     *
+     * FIXME.. Why do we have a config parameter?
      * @param $config
      *
      * @return null|string
      */
-    public function getAccessToken($config)
+    public function getAccessToken($config = null)
     {
         return $this->accessToken;
     }

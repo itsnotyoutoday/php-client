@@ -26,6 +26,9 @@ use BlockCypher\Auth\SimpleTokenCredential;
 use BlockCypher\Core\BlockCypherCoinSymbolConstants;
 use BlockCypher\Rest\ApiContext;
 use BlockCypher\Validation\TokenValidator;
+use Filebase\Database;
+
+$appcfg = array();
 
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
@@ -36,9 +39,20 @@ if (ini_set('serialize_precision', 17) === false) {
     die("Couldn't update serialize_precision.");
 }
 
+
+
+/** @var \BlockCypher\Rest\ApiContext $apiContext */
+$apiContextSdkConfigFile = getApiContextUsingConfigIni();
+
+/**
+ * @var ApiContext[] $apiContexts
+ */
+
+$apiContexts['sdk_config'] = $apiContextSdkConfigFile; // Add ApiContext created using sdk_config.ini custom settings
+
 // Replace these values by entering your own token by visiting https://accounts.blockcypher.com/
 /** @noinspection SpellCheckingInspection */
-$token = 'c0afcccdde5081d6429de37d16166ead';
+$token = $apiContexts['sdk_config']->getCredential()->getAccessToken();
 
 if (isset($_GET['token'])) $token = $_GET['token'];
 if (!validateToken($token)) {
@@ -46,11 +60,10 @@ if (!validateToken($token)) {
     exit(1);
 }
 
-/** @var \BlockCypher\Rest\ApiContext $apiContext */
-$apiContextSdkConfigFile = getApiContextUsingConfigIni();
+// Load the database
+$database = new Database(['dir' => $appcfg['database']['directory'], 'format' => \Filebase\Format\Yaml::class, 'pretty' => true]);
 
 $apiContexts = createApiContextForAllChains($token);
-$apiContexts['sdk_config'] = $apiContextSdkConfigFile; // Add ApiContext created using sdk_config.ini custom settings
 
 return $apiContexts;
 
@@ -83,6 +96,7 @@ function createApiContextForAllChains($token)
  */
 function getApiContextUsingConfigIni()
 {
+    global $appcfg;
     // #### SDK configuration
     // Register the sdk_config.ini file in current directory
     // as the configuration source.
@@ -90,7 +104,11 @@ function getApiContextUsingConfigIni()
         define("BC_CONFIG_PATH", __DIR__);
     }
 
-    $apiContext = ApiContext::create('main', 'btc', 'v1');
+    // Get the init file
+    $appcfg = parse_ini_file(BC_CONFIG_PATH . '/sdk_config.ini', true);
+
+    $apiContext = getApiContextUsingConfigArray($appcfg['account']['token'], $appcfg['account']['chain'],  $appcfg['account']['coin'],
+        $appcfg['account']['version']);
 
     return $apiContext;
 }

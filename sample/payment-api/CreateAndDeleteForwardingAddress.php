@@ -13,7 +13,7 @@
 /** @var \BlockCypher\Api\PaymentForward $paymentForward */
 $paymentForward = require 'CreateForwardingAddress.php';
 
-$paymentForwardClient = new \BlockCypher\Client\PaymentForwardClient($apiContexts['BTC.main']);
+$paymentForwardClient = new \BlockCypher\Client\PaymentForwardClient($apiContexts['sdk_config']);
 
 // ## Delete PaymentForward
 try {

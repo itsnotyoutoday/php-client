@@ -19,6 +19,9 @@ $pubkeys = array(
 $addressKeyChain = new \BlockCypher\Api\AddressKeyChain();
 $addressKeyChain->setPubkeys($pubkeys);
 $addressKeyChain->setScriptType('multisig-2-of-3');
+/**
+ *
+ */
 $request = clone $addressKeyChain;
 
 // ### Create Multisig Address

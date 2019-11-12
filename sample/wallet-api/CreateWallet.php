@@ -14,6 +14,7 @@ if (isset($_GET['wallet_name'])) {
     $walletName = 'alice'; // Default wallet name for samples
 }
 
+
 $wallet = new \BlockCypher\Api\Wallet();
 $wallet->setName($walletName);
 $wallet->setAddresses(array(

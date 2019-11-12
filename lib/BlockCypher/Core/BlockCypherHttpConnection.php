@@ -13,6 +13,9 @@ use BlockCypher\Exception\BlockCypherConnectionException;
 class BlockCypherHttpConnection
 {
 
+    /* Lasty Queried URL */
+    protected static $query_url = null;
+
     /**
      * HTTP status codes for which a retry must be attempted
      * retry is currently attempted for Request timeout, Bad Gateway,
@@ -46,6 +49,10 @@ class BlockCypherHttpConnection
         $this->logger = BlockCypherLoggingManager::getInstance(__CLASS__);
     }
 
+    public static function lastQuery() {
+        return self::$query_url;
+    }
+
     /**
      * Executes an HTTP request
      *
@@ -58,8 +65,10 @@ class BlockCypherHttpConnection
         //Initialize the logger
         $this->logger->info($this->httpConfig->getMethod() . ' ' . $this->httpConfig->getUrl());
 
+
         //Initialize Curl Options
         $ch = curl_init($this->httpConfig->getUrl());
+        self::$query_url = $this->httpConfig->getUrl();
         curl_setopt_array($ch, $this->httpConfig->getCurlOptions());
         curl_setopt($ch, CURLOPT_URL, $this->httpConfig->getUrl());
         curl_setopt($ch, CURLOPT_HEADER, true);

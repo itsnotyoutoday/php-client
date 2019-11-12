@@ -15,7 +15,7 @@ $destination = '15qx9ug952GWGTNn7Uiv6vode4RcGrRemh';
 $callbackUrl = 'http://requestb.in/rwp6jirw?uniqid=' . uniqid();
 
 /// For Sample Purposes Only.
-$paymentForward = new \BlockCypher\Api\PaymentForward();
+$paymentForward = new \BlockCypher\Api\PaymentForward();j
 $paymentForward->setDestination($destination);
 $paymentForward->setCallbackUrl($callbackUrl);
 $request = clone $paymentForward;
