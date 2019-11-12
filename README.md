@@ -1,3 +1,8 @@
+# Blockcypher SDK Modernization
+Current blockcypher/php-client is built for PHP 5.2, 5.3 and an older version of PHPUnit.
+Purpose of this project is to bring the SDK upto par with PHP >7.2, PHPUnit 8.3.4, and bitwasp/bit-coin v1.0 libraries
+
+See the Wiki for Updates
 # PHP REST API SDK for BlockCypher
 
 ![Home Image](https://raw.githubusercontent.com/wiki/blockcypher/php-client/images/homepage.jpg)
