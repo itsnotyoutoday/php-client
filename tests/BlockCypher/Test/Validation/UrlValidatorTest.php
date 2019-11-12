@@ -36,6 +36,7 @@ class UrlValidatorTest extends \PHPUnit\Framework\TestCase
     /**
      *
      * @dataProvider positiveProvider
+     * @doesNotPerformAssertions
      */
     public function testValidate($input)
     {

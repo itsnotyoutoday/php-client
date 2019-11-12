@@ -2,6 +2,7 @@
 
 namespace BlockCypher\Crypto;
 
+use BitWasp\Bitcoin\Crypto\EcAdapter\Impl\PhpEcc\Key\PublicKey;
 use BitWasp\Bitcoin\Key\Factory\PrivateKeyFactory;
 use BitWasp\Bitcoin\Crypto\EcAdapter\Key\PrivateKeyInterface;
 use BlockCypher\Exception\BlockCypherInvalidPrivateKeyException;
@@ -97,6 +98,7 @@ class PrivateKeyManipulator
     }
 
     /**
+     * FIXME: This doesn't work with bitwasp/bitcoin API see https://github.com/Bit-Wasp/bitcoin-php/issues/552
      * @param PrivateKeyInterface $privateKey
      * @param string $coinSymbol
      * @return mixed
@@ -108,6 +110,9 @@ class PrivateKeyManipulator
 
         $network = CoinSymbolNetworkMapping::getNetwork($coinSymbol);
 
+        /**
+         * @var PublicKey $publicKey
+         */
         $publicKey = $privateKey->getPublicKey();
         $address = $publicKey->getAddress()->getAddress($network);
 

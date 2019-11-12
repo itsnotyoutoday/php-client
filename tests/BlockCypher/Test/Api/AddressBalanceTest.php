@@ -178,16 +178,19 @@ class AddressBalanceTest extends ResourceModelTestCase
             ->disableOriginalConstructor()
             ->getMock();
 
+
         $mockBlockCypherRestCall->expects($this->any())
             ->method('execute')
             ->will($this->returnValue(
                 '[' . AddressBalanceTest::getJson() . ']'
             ));
 
+
         $addressBalanceList = Array(AddressBalanceTest::getObject()->getAddress());
 
         /** @noinspection PhpUndefinedVariableInspection */
         /** @noinspection PhpParamsInspection */
+
         $obj->getMultiple($addressBalanceList, $params, $mockApiContext, $mockBlockCypherRestCall);
     }
 }

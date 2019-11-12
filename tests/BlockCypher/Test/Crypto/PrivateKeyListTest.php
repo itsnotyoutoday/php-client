@@ -2,7 +2,7 @@
 
 namespace BlockCypher\Test\Crypto;
 
-use BitWasp\Bitcoin\Key\PrivateKeyInterface;
+use \BitWasp\Bitcoin\Crypto\EcAdapter\Key\PrivateKeyInterface;
 use BlockCypher\Crypto\PrivateKeyList;
 use BlockCypher\Crypto\PrivateKeyManipulator;
 
